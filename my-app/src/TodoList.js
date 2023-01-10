@@ -9,10 +9,10 @@ const TodoList = (props) => {
 
     return (
         <div id="TDL">
-            <h1>Todo List</h1>
+            <h1 className="todolist-title">TODO</h1>
             <Input setInput={setNewTodo} setTDL={setTodoList} TDL={todoList} todoItemID={todoItemID} setID={setTodoItemID}/>
             <div className="todolist-box">
-            <TodoItem TDL={todoList}/>
+            <TodoItem TDL={todoList} setTDL={setTodoList}/>
             </div>
         </div>
     )
