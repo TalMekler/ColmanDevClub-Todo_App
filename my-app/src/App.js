@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Input from './Input';
 import TodoList from './TodoList';
 import BG from './BG';
 
@@ -13,7 +11,6 @@ function App() {
     <div className="App">
       <BG />
       <TodoList />
-
     </div>
   );
 }
