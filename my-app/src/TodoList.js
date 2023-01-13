@@ -4,15 +4,20 @@ import Input from "./Input";
 
 const TodoList = (props) => {
   const [todoList, setTodoList] = useState([])
+  const [completedList, setCompletedList] = useState([])
+  const [noCompletedList, setNoCompletedList] = useState([])
   const [todoItemID, setTodoItemID] = useState(0)
 
     const addTodo = (newTodo) => {
         setTodoList([...todoList, newTodo])
+        setNoCompletedList([...noCompletedList, newTodo])
     }
 
     const removeTodo = (todoListID) => {
+        console.log(`Remove todo`);
         const newTDL = todoList.filter( (todo) => todo.id !== todoListID)
-        setTodoList([...newTDL])
+        updateCompleted(newTDL)
+        
     }
 
     const toggleCompleted = (todoListID) => {
@@ -21,8 +26,19 @@ const TodoList = (props) => {
                 todoList[i].isCompleted = !todoList[i].isCompleted
             }
         }
-        setTodoList([...todoList])
+        const newTDL = [...todoList]
+        updateCompleted(newTDL)
     }
+
+    const updateCompleted = (list) => {
+        console.log(`updateCompleted`);
+        const completed = list.filter( (todo) => todo.isCompleted === true )
+        const noCompleted = list.filter( (todo) => todo.isCompleted === false )
+        setCompletedList([...completed]);
+        setNoCompletedList([...noCompleted])
+        setTodoList([...noCompleted, ...completed])
+    }
+    
 
 
     return (
@@ -34,6 +50,10 @@ const TodoList = (props) => {
                     <TodoItem todoContent={todo.content} todoID={todo.id} isCompleted={todo.isCompleted} removeTodo={removeTodo} onCheckTodoItem={toggleCompleted}/>
                 )}
             </div>
+            {/* <div className="completed-wrapper">
+                <h1 className="completed-title">COMPLETED</h1>
+                    {completedList.map(completedItem => <TodoItem todoContent={completedItem.content} todoID={completedItem.id} isCompleted={completedItem.isCompleted} removeTodo={removeTodo} onCheckTodoItem={toggleCompleted}/>)}
+            </div> */}
         </div>
     )
 }

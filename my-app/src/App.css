@@ -74,17 +74,25 @@ body {
   z-index: 1;
   padding: 1rem;
   color: white;
-  position: absolute;
+  position: relative;
   top: 8rem;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.todolist-title {
+.todolist-title, .completed-title {
   letter-spacing: .6rem;
   text-align: left;
 }
+
+.completed-wrapper {
+  margin-top: 4rem;
+}
+.completed-title {
+  font-size: .75em;
+}
+
 
 form {
   width: 100%;
@@ -116,7 +124,7 @@ form {
   border-radius: .3rem;
 }
 .todo-item {
-  padding: .75rem;
+  /* padding: .75rem; */
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -139,6 +147,13 @@ form {
   border-radius: 100%;
   cursor: pointer;
 
+}
+.clickable-toggle-completed{
+  cursor: pointer;
+  flex: 1;
+  padding: .75rem;
+  display: flex;
+  align-items: center;
 }
 /* 
 .todo-item .check-toggle:hover {
@@ -182,10 +197,23 @@ form {
 
 .todo-item i {
   cursor: pointer;
+  padding: .75rem;
 }
 
 .todo-item i::before {
   content:"\f00d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  visibility: hidden;
+}
+
+.todo-item i.edit-item {
+  cursor: pointer;
+  margin-right: .5rem;
+}
+i.edit-item::before {
+  content:"\f044" !important;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   font-style: normal;
