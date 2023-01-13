@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+.App {
+  text-align: center;
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  font-family: 'Josefin Sans', sans-serif !important;
+}
+
+body {
+  position: relative;
+}
+
+#BG {
+  background: hsl(235, 21%, 11%);
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#BG div {
+  flex: 0.35;
+  background: url("../../images/bg-desktop-dark.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#TDL {
+  width: 40rem;
+  z-index: 1;
+  padding: 1rem;
+  color: white;
+  position: relative;
+  top: 8rem;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.todolist-title, .completed-title {
+  letter-spacing: .6rem;
+  text-align: left;
+}
+
+.completed-wrapper {
+  margin-top: 4rem;
+}
+.completed-title {
+  font-size: .75em;
+}
+
+
+form {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  display: grid;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: .3rem;
+}
+#input {
+  flex: 1;
+  position: relative;
+  outline: 0;
+  border: 0;
+  font-size: 1rem;
+  background: hsl(235, 24%, 19%);
+  color: white;
+  padding: 0.75rem;
+  margin: 0;
+}
+
+.todolist-box {
+  overflow: hidden;
+  border-radius: .3rem;
+}
+.todo-item {
+  /* padding: .75rem; */
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: hsl(235, 24%, 19%);
+}
+
+.todo-item:not(:last-child) {
+  border-bottom: 1px solid hsla(234, 39%, 85%, 0.272);
+}
+
+.todo-item .todo-content {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.todo-item .check-toggle {
+  border: 0.1rem solid hsl(234, 11%, 52%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  cursor: pointer;
+
+}
+.clickable-toggle-completed{
+  cursor: pointer;
+  flex: 1;
+  padding: .75rem;
+  display: flex;
+  align-items: center;
+}
+/* 
+.todo-item .check-toggle:hover {
+  border-image-slice: 1;
+  border-image: linear-gradient(to left, #00C853, #B2FF59) 100;
+  border-width: 4px;
+} */
+
+.todo-item.checked .check-toggle {
+  background-image: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  position: relative;
+}
+
+.todo-item.checked .check-toggle::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: .7em;
+}
+
+.todo-item, #input {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-item span {
+  font-weight: 600;
+}
+.todo-item.checked span {
+  color: gray;
+  text-decoration:line-through;
+  font-weight: 400;
+}
+
+.todo-item i {
+  cursor: pointer;
+  padding: .75rem;
+}
+
+.todo-item i::before {
+  content:"\f00d";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  visibility: hidden;
+}
+
+.todo-item i.edit-item {
+  cursor: pointer;
+  margin-right: .5rem;
+}
+i.edit-item::before {
+  content:"\f044" !important;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-style: normal;
+  visibility: hidden;
+}
+
+.todo-item:hover i::before {
+  visibility: visible;
+}
